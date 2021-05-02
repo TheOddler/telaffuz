@@ -3,6 +3,8 @@ import urllib.request, json
 import urllib.parse
 from multiprocessing import Pool, cpu_count
 from tqdm import tqdm
+import time
+import random
 
 inputFile = 'words.txt'
 outputFile = 'output.txt'
