@@ -1,4 +1,4 @@
-# Telafuzz (Turkish for pronunciation)
+# Telafuzz (Turkish for "pronunciation")
 
 This program takes a list of words that are in file "words.txt" and looks up their pronunciations on a Dictionary website.
 The words listed here are over 70,000 words from a Turkish spelling dictionary.
