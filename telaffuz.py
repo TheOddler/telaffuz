@@ -12,12 +12,20 @@ urlPrefix = 'https://sozluk.gov.tr/gts?ara='
 delimiter = '\t'
 threadCount = 16
 
-print(random.uniform(1, 2))
+def cleanWord(word):
+    word = re.split(',|/|\(', word)[0] # get the word itself by removing stuff after a , a / or in brackets. This is just extra metadata we don't want
+    # replace some special Turkish capital letters (don't lower all, as some have special meanings when capitalized)
+    word = word.replace('Ç', 'ç')
+    word = word.replace('İ', 'i')
+    word = word.replace('Ş', 'ş')
+    word = word.strip() # remove whitespace
+    return word
 
 def processWord(word):
-    word = re.split(',|/', word)[0].strip()
-    url = urlPrefix + urllib.parse.quote(word)
-    processed = word
+    processed = word.strip() # each line starts with the word itself
+
+    cleanedWord = cleanWord(word)
+    url = urlPrefix + urllib.parse.quote(cleanedWord)
 
     with urllib.request.urlopen(url) as response:
         data = json.loads(response.read().decode())
